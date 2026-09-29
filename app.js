@@ -10,7 +10,7 @@ m:{'2026-10':{v3:20,t1:300000,t3:60000},'2026-11':{v3:20,v12:1472,t1:100000}},mm
 cat:[[201,'交際費(飲み)',5000],[202,'趣味・娯楽(本)',5000],[203,'自動車',0],[204,'交通費',3000],[205,'食費・水道光熱費',0],[206,'日用・消耗品',0]].map(a=>({id:a[0],n:a[1],a:a[2]})),led:[],
 big:[['2026-10','ダイコン',25000],['2026-10','ホワイトニング(2)',33000],['2026-10','エジプト航空券',200000],['2026-11','ホワイトニング(3)',33000],['2026-12','ホワイトニング(h)',33000],['2026-12','バリ島航空券',120000],['2026-12','ダイビング',98000],['2027-01','韓国旅費',80000],['2027-03','エジプト旅費',100000],['2027-04','健康診断',65000],['2027-05','ミラ整備関連',100000],['2027-05','バリ島旅費',80000]].map((a,i)=>({id:i+1,ym:a[0],n:a[1],a:a[2],ap:false,pm:'card',b:2,memo:''}))};
 let S;try{S=JSON.parse(localStorage.getItem('kk2'))}catch(e){}S=S||JSON.parse(JSON.stringify(S0));S.pays=S.pays||[{id:301,n:'給与',day:25,b:S.pb||2,r:100}];if(S.cb==null)S.cb=S.sb;
-mig();const save=()=>{try{localStorage.setItem('kk2',JSON.stringify(S))}catch(e){}};
+mig();const save=()=>{try{localStorage.setItem('kk2',JSON.stringify(S));localStorage.setItem('kk2t',Date.now())}catch(e){}window.onKKSave&&window.onKKSave()};
 const now=new Date(),d0=now.getDate()>25?new Date(now.getFullYear(),now.getMonth()+1,1):now;
 let ym=d0.getFullYear()+'-'+String(d0.getMonth()+1).padStart(2,'0'),tab=0,bs=ym,ym0=ym;
 const nx=(y,k=1)=>{let[a,b]=y.split('-').map(Number);b+=k-1;const c=a+Math.floor(b/12),e=((b%12)+12)%12+1;return c+'-'+String(e).padStart(2,'0')};
@@ -109,4 +109,5 @@ function addB(){const a=+$('ba').value,n=$('bn').value.trim();if(!n||!a)return a
 document.addEventListener('toggle',e=>{const t=e.target.dataset&&e.target.dataset.t;if(t)OPN[t]=e.target.open},true);
 document.addEventListener('change',e=>{const el=e.target,p=el.dataset.p;if(!p)return;const q=p.split('.'),v=el.type=='checkbox'?el.checked:(el.type=='number'||el.dataset.n)?+el.value:el.value;
 if(q[0]=='ct'){const k=calc(q[1],openB()).cards.find(x=>x.id==q[2]);(S.m[q[1]]=S.m[q[1]]||{})['c'+q[2]]=v-k.fx}else if(q[0]=='rv'){S.rec.find(x=>x.id==q[1]).v[q[2]]=el.value===''?'':+el.value}else if(q[0]=='mv'){(S.m[q[1]]=S.m[q[1]]||{})[q[2]]=v}else if(q[0]=='o')S[q[1]][q[2]]=v;else if(q[0]=='r'){S[q[1]]=v;if(q[1]=='fo'&&v)S.fx.sort((a,b)=>fk(a)-fk(b))}else S[q[0]].find(x=>x.id==q[1])[q[2]]=v;save();go()});
+window.KK={get:()=>S,set:(v,at)=>{S=v;mig();try{localStorage.setItem('kk2',JSON.stringify(S));localStorage.setItem('kk2t',at)}catch(e){}go()}};
 go();
