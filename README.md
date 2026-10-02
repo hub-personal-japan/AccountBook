@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/32811810/README.md)
 # 資金管理 家計簿
 
 ビルド不要の静的Webアプリです(HTML / CSS / JavaScript のみ)。
@@ -35,3 +34,6 @@ service cloud.firestore {
 }
 ```
 使い方: 各端末で右上の「☁ ログイン」→ 同じGoogleアカウントでログイン。以降は入力が自動で反映されます。
+
+## PC表示
+幅900px以上で、左サイドメニュー+2列レイアウトに切り替わります(スマホは下部タブ・1列)。
