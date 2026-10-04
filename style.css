@@ -55,3 +55,6 @@ td,th{padding:3px 4px}input,select,textarea{padding:3px 5px}input[type=number]{w
 @media(min-width:900px){.kp{grid-template-columns:repeat(8,minmax(0,1fr))}}
 
 .tr{margin:0!important}.br{height:8px}.hero{margin:4px 0;padding:4px 10px}.w td,.w th{padding:2px 4px}.ms{margin-bottom:4px}
+
+.lr input[type=date]{width:112px;flex:none}.lr select{width:74px}.lr input[type=number]{width:64px}.lr{padding:1px 0!important}.lg{max-height:none}
+.ms6{grid-template-columns:repeat(6,1fr)}.ms6 .mb{padding:2px 0;font-size:11px}
